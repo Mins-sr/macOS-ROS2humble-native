@@ -10,6 +10,7 @@
 - **Qt5**: `brew install qt@5` (ビルドには Qt5 が必須です)
 - **Eigen3**: `brew install eigen`
 - **Assimp**: `brew install assimp`
+- **Rust**: `brew install rust` (Zenoh のビルドに必要です)
 - **Python 3.10**: (pyenv などで管理されていることを想定)
 
 ```bash
@@ -112,6 +113,30 @@ chmod +x build_rviz_optimized.sh
 source ~/ros2_humble/install/setup.bash
 rviz2
 ```
+
+## 6. 付録: rmw_zenoh_cpp のビルド (任意)
+
+DDSに代わるミドルウェアとして Zenoh を使用する場合のビルド手順です。
+
+### Step 1: ソースの取得
+```bash
+cd ~/ros2_humble/src
+git clone https://github.com/ros2/rmw_zenoh.git -b humble
+```
+
+### Step 2: ビルド
+```bash
+cd ~/project/ros2wk
+./build_rviz_optimized.sh zenoh_cpp_vendor rmw_zenoh_cpp
+```
+
+### Step 3: 起動確認
+```bash
+source ~/ros2_humble/install/setup.bash
+export ROS_DOMAIN_ID=0
+ros2 run rmw_zenoh_cpp rmw_zenohd
+```
+`Started Zenoh router with id ...` と表示されれば成功です。
 
 ---
 **トラブルシューティング:**
