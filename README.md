@@ -47,6 +47,7 @@ macOS でのビルド中に発生するランダムな割り込み（`Interrupt:
 #!/bin/bash
 export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
 . ~/ros2_humble/install/setup.bash
+cd ~/ros2_humble
 
 # 追加の検索パス
 export CMAKE_PREFIX_PATH="/opt/homebrew:$CMAKE_PREFIX_PATH"
